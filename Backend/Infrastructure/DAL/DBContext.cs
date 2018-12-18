@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.Configuration;
 
 namespace Backend.Infrastructure.DAL
@@ -38,9 +36,16 @@ namespace Backend.Infrastructure.DAL
         public SqlCommand CreateCommand(string storedProcedureName)
         {
             SqlCommand command = new SqlCommand(storedProcedureName);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.CommandType = CommandType.StoredProcedure;
             command.Connection = this.connection;
             return command;
+        }
+
+        public static DBContext GetContext()
+        {
+            DBContext context = new DBContext();
+            context.Open();
+            return context;
         }
     }
 }
