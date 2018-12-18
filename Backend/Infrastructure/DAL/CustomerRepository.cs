@@ -22,7 +22,7 @@ namespace Backend.Infrastructure.DAL
         public CustomerModel CustomerCreate(CustomerVM customer)
         {
             CustomerModel customerCreate = null;
-            using (SqlCommand cmd = this.context.CreateCommand("dbo.CustomerGetById"))
+            using (SqlCommand cmd = this.context.CreateCommand("dbo.CustomerCreate"))
             {
                 cmd.Parameters.Add("@FirstName", SqlDbType.VarChar, 50).Value = customer.FirstName;
                 cmd.Parameters.Add("@LastName", SqlDbType.VarChar, 50).Value = customer.LastName;
@@ -55,7 +55,7 @@ namespace Backend.Infrastructure.DAL
         public CustomerModel CustomerUpdate(CustomerVM customer)
         {
             CustomerModel customerUpdate = null;
-            using (SqlCommand cmd = this.context.CreateCommand("dbo.CustomerGetById"))
+            using (SqlCommand cmd = this.context.CreateCommand("dbo.CustomerUpdate"))
             {
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Value = customer.Id;
                 cmd.Parameters.Add("@FirstName", SqlDbType.VarChar, 50).Value = customer.FirstName;
@@ -122,6 +122,7 @@ namespace Backend.Infrastructure.DAL
                     {
                         while (rdr.Read())
                         {
+                            customers.Add(PrepareModel(rdr));
 
                         }
                     }
@@ -144,7 +145,7 @@ namespace Backend.Infrastructure.DAL
                     {
                         while (rdr.Read())
                         {
-
+                            customer = PrepareModel(rdr);
                         }
                     }
                 }

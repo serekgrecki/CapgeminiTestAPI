@@ -5,7 +5,7 @@ using Backend.ViewModels;
 
 namespace Backend.Infrastructure.DAL.Interfaces
 {
-    interface ICustomerRepository
+    public interface ICustomerRepository
     {
         CustomerModel CustomerCreate(CustomerVM customer);
         CustomerModel CustomerUpdate(CustomerVM customer);

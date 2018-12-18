@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using AutoMapper;
+﻿using AutoMapper;
+using static AutoMapper.Mapper;
 using Backend.Models;
 using Backend.ViewModels;
 using Ninject;
