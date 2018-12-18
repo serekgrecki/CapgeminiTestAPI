@@ -2,6 +2,8 @@ using System;
 using System.Web;
 using Backend.Infrastructure.DAL;
 using Backend.Infrastructure.DAL.Interfaces;
+using Backend.Services;
+using Backend.Services.Interfaces;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Common;
@@ -61,6 +63,7 @@ namespace Backend.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<ICustomerService>().To<CustomerService>().InRequestScope();
         }
 
         private static void RegisterRepositories(IKernel kernel)
