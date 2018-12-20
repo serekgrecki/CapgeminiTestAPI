@@ -17,7 +17,8 @@ namespace Backend.ViewModels
         public string State { get; set; }
         public DateTime DateOfBirth { get; set; }
 
-        public string FullName => $"{FirstName} {LastName}".Trim();
+        public string  FullName => $"{FirstName} {LastName}".Trim();
+
         public int Age => DateTime.Now.Year - this.DateOfBirth.Year;
     }
 }

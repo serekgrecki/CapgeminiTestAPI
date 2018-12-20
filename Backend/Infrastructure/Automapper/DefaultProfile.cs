@@ -8,12 +8,8 @@ namespace Backend.Infrastructure.Automapper
 {
     public class DefaultProfile : Profile
     {
-        private readonly StandardKernel _kernel;
-
         public DefaultProfile()
         {
-            _kernel = new StandardKernel();
-
             CreateMap<CustomerModel, CustomerVM>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
